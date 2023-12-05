@@ -1,9 +1,9 @@
 export default function cleanSet(set, startString) {
   let valueFilter = '';
-  if (startString.length === 0 || !startString) return '';
+  if (startString.length === 0 || startString === undefined) return '';
   valueFilter = [...set]
-    .filter((vlst) => (vlst === undefined ? '' : vlst.startsWith(startString)))
-    .map((vlst) => (vlst === undefined ? '' : vlst.replace(startString, '')))
+    .filter((vls) => (vls === undefined ? '' : vls.startsWith(startString)))
+    .map((vls) => (vls === undefined ? '' : vls.replace(startString, '')))
     .join('-');
 
   return valueFilter;
