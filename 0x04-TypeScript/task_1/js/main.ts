@@ -41,3 +41,30 @@ const teacher3: Teacher = {
 const instantiatedTeacher: TeacherClass = new ClassTeacher(teacher3);
 
 console.log(instantiatedTeacher);
+
+//Extend director to number of reports
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+class classDirector extends ClassTeacher implements Directors {
+  numberOfReports: number;
+
+  constructor(director: Directors) {
+    super(director);
+    this.numberOfReports = director.numberOfReports;
+  }
+}
+
+const director: Directors = {
+  firstName: 'Alice',
+  fullTimeEmployee: true,
+  lastName: 'Smith',
+  location: 'New York',
+  numberOfReports: 5,
+  additionalAttribute: 'additionalValue', // Example of an additional attribute
+};
+
+const instantiatedDirector: ClassDirector = new ClassDirector(director);
+
+console.log(instantiatedDirector);
