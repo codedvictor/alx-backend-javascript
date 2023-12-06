@@ -30,15 +30,7 @@ class ClassTeacher implements Teacher {
   }
 }
 
-const teacher3: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-};
-
-const instantiatedTeacher: TeacherClass = new ClassTeacher(teacher3);
+const instantiatedTeacher: TeacherClass = new ClassTeacher(teacher);
 
 console.log(instantiatedTeacher);
 
@@ -68,3 +60,17 @@ const director: Directors = {
 const instantiatedDirector: ClassDirector = new ClassDirector(director);
 
 console.log(instantiatedDirector);
+
+interface PrintTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+  const firstLetter = firstName.charAt(0).toUpperCase();
+  const fullName = `${firstLetter}. ${lastName}`;
+  return fullName;
+};
+
+// Example usage:
+const result: string = printTeacher("John", "Doe");
+console.log(result); // Output: J. Doe
