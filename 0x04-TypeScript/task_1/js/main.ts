@@ -24,13 +24,21 @@ class ClassTeacher implements Teacher {
     // Add any additional attribute dynamically
     for (const key in teacher) {
       if (!['firstName', 'lastName', 'fullTimeEmployee', 'yearsOfExperience', 'location'].includes(key)) {
-        this[key] = teacher[key];
+      (this as any)[key] = teacher[key]
       }
     }
   }
 }
 
-const instantiatedTeacher: TeacherClass = new ClassTeacher(teacher);
+const teacher3: Teacher = {
+  firstName: 'John',
+  fullTimeEmployee: false,
+  lastName: 'Doe',
+  location: 'London',
+  contract: false,
+};
+
+const instantiatedTeacher: ClassTeacher = new ClassTeacher(teacher3);
 
 console.log(instantiatedTeacher);
 
@@ -57,7 +65,7 @@ const director: Directors = {
   additionalAttribute: 'additionalValue', // Example of an additional attribute
 };
 
-const instantiatedDirector: ClassDirector = new ClassDirector(director);
+const instantiatedDirector: classDirector = new classDirector(director);
 
 console.log(instantiatedDirector);
 
@@ -74,3 +82,33 @@ const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
 // Example usage:
 const result: string = printTeacher("John", "Doe");
 console.log(result); // Output: J. Doe
+
+//Task 3
+interface StudentConstructor {
+  firstName: string;
+  lastName: string;
+}
+
+interface StudentClass {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+class Student implements StudentClass {
+  private firstName: string;
+  private lastName: string;
+
+  constructor({ firstName, lastName }: StudentConstructor) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
