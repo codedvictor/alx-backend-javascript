@@ -19,17 +19,17 @@ const secondStudent: Student = {
   location: 'Ikeja',
 }
 
-const studentsList: Student[] = [s1, s2];
+const studentsList: Student[] = [firstStudent, secondStudent];
 
-const vanTable = document.createElement('table');
+const table = document.createElement('table');
 
 studentsList.forEach((student) => {
-  const row = vantable.insertRow();
-  const cell1 = xrow.insertCell(0);
-  const cell2 = xrow.insertCell(1);
+  const row = table.insertRow();
+  const cell1 = row.insertCell(0);
+  const cell2 = row.insertCell(1);
 
   cell1.textContent = student.firstName;
   cell2.textContent = student.location;
 });
 
-document.body.appendChild(vantable);
+document.body.appendChild(table);
